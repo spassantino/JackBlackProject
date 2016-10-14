@@ -5,27 +5,28 @@ import java.util.List;
 
 public class Hand {
 
-	List<Card> hand = new ArrayList<>(2);
+	static List<Card> hand = new ArrayList<>(2);
 	
 	public Hand(){
 		
 	}
 
-	public static void addCard(Card card) {
+	public void addCard(Card card) {
 		return;
 	}
 
-	public Hand getCardsInHand(Deck deck) {
+	public static Hand getCardsInHand(Deck deck) {
 		for (int i = 0; i < 2; i++) {
-			Card c = new Card(deck.dealCard().getRank(),c.getSuit());
+			Card c = deck.getDeck().get(i);
 			hand.add(c);
+			
 		}
 		return null;
 	}
 
-	public static int getValueOfHand() {
+//	public static int getValueOfHand() {
 //		int valueOfHand = .getValue();
 //		return valueOfHand;
 
-	}
+//	}
 }
