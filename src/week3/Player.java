@@ -27,8 +27,10 @@ public class Player {
 		return hand;
 	}
 
-	public void setHand(Hand hand) {
-		this.hand = hand;
+	public void setHand(Hand h) {
+		System.out.println("in set hand");
+		this.hand = h;
+		System.out.println(hand.getHand().size());
 	}
 
 	public Double getWallet() {

@@ -9,15 +9,8 @@ public class Deck implements Comparator<Card> {
 
 	static List<Card> deck = new ArrayList<>(52);
 
+	// no argument constructor
 	public Deck() {
-	}
-
-	public List<Card> getDeck() {
-		return deck;
-	}
-
-	public void setDeck(List<Card> deck) {
-		Deck.deck = deck;
 	}
 
 	// this method successfully instantiates and prints a deck
@@ -49,11 +42,14 @@ public class Deck implements Comparator<Card> {
 		// System.out.println(card.getRank() + " " + card.getSuit() + " " +
 		// card.getValue());
 
-		// method to establish the cards remaining
 		shuffleDeck();
 	}
-
-	public static Hand dealCard() {
+	// method to establish the cards remaining
+	public void cardsRemaining(){
+		System.out.println("Your deck now contains " + deck.size() + "cards ");
+	}
+	//method which deals cards and returns a hand with two cards
+	public Hand dealCard() {
 		// for (Card card : deck) {
 		// System.out.println(card);
 		// deck.remove(0);
@@ -68,11 +64,21 @@ public class Deck implements Comparator<Card> {
 		return hand;
 	}
 
+	// method called from makeDeck method to shuffle cards
 	public static void shuffleDeck() {
 		// this method successfully shuffles a deck
 		// if instantiate a list of 52 cards within deck class
 		// then enter like so; Collections.shuffle(this);
 		Collections.shuffle(deck);
+	}
+
+	// getters and setters
+	public List<Card> getDeck() {
+		return deck;
+	}
+
+	public void setDeck(List<Card> deck) {
+		Deck.deck = deck;
 	}
 
 	@Override
