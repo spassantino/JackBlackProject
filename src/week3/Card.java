@@ -4,9 +4,9 @@ public class Card {
 	private Rank rank;
 	private Suit suit;
 	private int value;
-	
-	public Card(){
-		
+
+	public Card() {
+
 	}
 
 	public Card(Rank r, Suit s, int v) {
@@ -18,10 +18,27 @@ public class Card {
 	public int getValue() {
 		return value;
 	}
-	
-	public void setValue(int value) {
-		this.value = value;
+
+	public void setValue(int v) {
+		this.value = v;
 	}
+
+	public Rank getRank() {
+		return rank;
+	}
+
+	public void setRank(Rank r) {
+		this.rank = r;
+	}
+
+	public Suit getSuit() {
+		return suit;
+	}
+
+	public void setSuit(Suit s) {
+		this.suit = s;
+	}
+
 	@Override
 	public String toString() {
 		return (rank + " of " + suit).toLowerCase();
@@ -35,22 +52,6 @@ public class Card {
 		result = prime * result + ((rank == null) ? 0 : rank.hashCode());
 
 		return result;
-	}
-
-	public Rank getRank() {
-		return rank;
-	}
-
-	public void setRank(Rank rank) {
-		this.rank = rank;
-	}
-
-	public Suit getSuit() {
-		return suit;
-	}
-
-	public void setSuit(Suit suit) {
-		this.suit = suit;
 	}
 
 	@Override
