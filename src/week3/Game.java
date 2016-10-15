@@ -12,10 +12,10 @@ public class Game {
 		g.start();
 	}
 
+	// this method should start the game
 	public void start() {
 		Scanner scanner = new Scanner(System.in);
 		Deck deck = new Deck();
-		// this method should start the game
 		System.out.println("Welcome to Black Jack ");
 		Deck.makeDeck();
 		System.out.println("What may I call you? ");
@@ -37,12 +37,30 @@ public class Game {
 		dealer.setHand(d);
 		for (Card c : dealer.getHand().getHand()) {
 			System.out.println(c.getRank() + " " + c.getSuit() + " " + c.getValue());
-			System.out.println(deck.cardsRemaining());
 		}
-		// System.out.println(user.getHand().getHand().get(0).getRank() + " " +
-		// user.getHand().getHand().get(0).getSuit());
-		// System.out.println(user.getHand().getHand().get(1).getRank() + " " +
-		// user.getHand().getHand().get(1).getSuit());
+		deck.cardsRemaining();
+		System.out.println(user.getName() + ": " + h.totalHandValue());
+		System.out.println(dealer.getName() + ": " + d.totalHandValue());
+		System.out.println("Hit or stay?");
+		String nextTurn = scanner.next();
+		if (nextTurn.toLowerCase().equals("hit")) {
+			h.addNewCard(deck);
+			System.out.println(h.getHand());
+			deck.cardsRemaining();
+
+		} else if (nextTurn.toLowerCase().equals("stay"))
+
+			if (h.totalHandValue() == 21) {
+				System.out.println("You won!");
+
+			} else if (d.totalHandValue() == 21) {
+				System.out.println("Darn you lost!");
+
+			}
+		
+
 		scanner.close();
+
 	}
+
 }

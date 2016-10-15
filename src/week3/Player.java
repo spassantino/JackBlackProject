@@ -28,7 +28,7 @@ public class Player {
 	}
 
 	public void setHand(Hand h) {
-		System.out.println("in set hand");
+		System.out.println("In " + name + "'s hand");
 		this.hand = h;
 		System.out.println(hand.getHand().size());
 	}

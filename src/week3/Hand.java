@@ -6,26 +6,29 @@ import java.util.List;
 public class Hand {
 
 	List<Card> hand = new ArrayList<>(2);
-	
-//no argument constructor
+
+	// no argument constructor
 	public Hand() {
 
 	}
-//method used for adding card in to hand
+
+	// method used for adding card in to hand
 	public void addCard(Card card) {
 		hand.add(card);
 		return;
 	}
-//method used for instantiating cards in hand from deck
+
+	// method used for instantiating cards in hand from deck
 	public Hand getCardsInHand(Deck deck) {
+
 		for (int i = 0; i < 2; i++) {
 			Card c = deck.getDeck().get(i);
 			hand.add(c);
-
 		}
 		return null;
 	}
-//getters and setters
+
+	// getters and setters
 	public List<Card> getHand() {
 		return hand;
 	}
@@ -34,4 +37,17 @@ public class Hand {
 		hand = h;
 	}
 
+	public int totalHandValue() {
+		int totalValue = hand.get(0).getValue() + (hand.get(1).getValue());
+		return totalValue;
+
+	}
+
+	public Card addNewCard(Deck deck) {
+		for (int i = 0; i < 1; i++) {
+			Card c = deck.getDeck().get(i);
+			hand.add(c);
+		}
+		return null;
+	}
 }

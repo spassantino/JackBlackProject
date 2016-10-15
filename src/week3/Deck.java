@@ -44,11 +44,13 @@ public class Deck implements Comparator<Card> {
 
 		shuffleDeck();
 	}
+
 	// method to establish the cards remaining
-	public void cardsRemaining(){
-		System.out.println("Your deck now contains " + deck.size() + "cards ");
+	public void cardsRemaining() {
+		System.out.println("Your deck now contains " + deck.size() + " cards ");
 	}
-	//method which deals cards and returns a hand with two cards
+
+	// method which deals cards and returns a hand with two cards
 	public Hand dealCard() {
 		// for (Card card : deck) {
 		// System.out.println(card);
