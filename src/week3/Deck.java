@@ -7,7 +7,9 @@ import java.util.List;
 
 public class Deck implements Comparator<Card> {
 
+	static Hand h = new Hand();
 	static List<Card> deck = new ArrayList<>(52);
+	static List<Card> hand = new ArrayList<>();
 
 	// no argument constructor
 	public Deck() {
@@ -47,23 +49,33 @@ public class Deck implements Comparator<Card> {
 
 	// method to establish the cards remaining
 	public void cardsRemaining() {
-		System.out.println("Your deck now contains " + deck.size() + " cards ");
+		System.out.println("(deck now contains " + deck.size() + " cards)");
 	}
 
 	// method which deals cards and returns a hand with two cards
-	public Hand dealCard() {
-		// for (Card card : deck) {
-		// System.out.println(card);
-		// deck.remove(0);
-		// break;
-		// }
-		Hand hand = new Hand();
-		for (int i = 0; i < 2; i++) {
-			hand.addCard(deck.get(i));
-			deck.remove(i);
-		}
-		// System.out.println(deck.size());
-		return hand;
+//	public static Hand dealCard() {
+//		// for (Card card : deck) {
+//		// System.out.println(card);
+//		// deck.remove(0);
+//		// break;
+//		// }
+//
+//		for (int i = 0; i < 2; i++) {
+//			h.addCard(deck.get(i));
+//			deck.remove(i);
+//
+//		}
+//		return h;
+	//	}
+
+	public static Card takeHit() {
+
+		return deck.get(0);
+	}
+
+	public void removeCard(Card c) {
+
+		deck.remove(0);
 	}
 
 	// method called from makeDeck method to shuffle cards
@@ -82,6 +94,16 @@ public class Deck implements Comparator<Card> {
 	public void setDeck(List<Card> deck) {
 		Deck.deck = deck;
 	}
+
+//	public static Card getCardsInHand() {
+//		Card c = new Card();
+//		for (int i = 0; i < 1; i++) {
+//			c = ((Deck) deck).getDeck().get(i);
+//			deck.remove(i);
+//			hand.add(c);
+//		}
+//		return c;
+//	}
 
 	@Override
 	public int compare(Card o1, Card o2) {
