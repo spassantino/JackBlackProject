@@ -43,10 +43,4 @@ public class Player {
 	// public void placeWager() {
 	//
 	// }
-
-	// @Override
-	// public String toString() {
-	// return "Player [name=" + name + ", hand=" + hand + ", wallet=" + wallet +
-	// "]";
-	// }
 }

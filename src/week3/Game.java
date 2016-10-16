@@ -26,7 +26,7 @@ public class Game {
 
 		user.setHand(h);
 		user.getHand().getHand();
-		
+
 		Hand d = new Hand();
 		d.addCard(Deck.takeHit());
 		gameDeck.removeCard(Deck.takeHit());
@@ -37,7 +37,7 @@ public class Game {
 		dealer.setHand(d);
 
 		dealer.getHand().getHand();
-		
+
 		System.out.println(user.getName() + "'s hand: " + h.toString() + " " + h.totalHandValue());
 		System.out.println(dealer.getName() + "'s hand: " + d.toString() + " " + d.totalHandValue());
 		gameDeck.cardsRemaining();
@@ -68,12 +68,9 @@ public class Game {
 		if (nextTurn.toLowerCase().equals("hit")) {
 			user.getHand().addCard(Deck.takeHit());
 			gameDeck.removeCard(Deck.takeHit());
-			System.out.println(user.getHand());
-
-			System.out.println(user.getHand().totalHandValue());
-
+			System.out.println(
+					user.getName() + "'s hand: " + user.getHand().toString() + " " + user.getHand().totalHandValue());
 			dealersChoice();
-
 		} else if (nextTurn.toLowerCase().equals("stay")) {
 			if (dealer.getHand().totalHandValue() == user.getHand().totalHandValue()) {
 				System.out.println(dealer.getName() + " and " + user.getName() + " have tied with "
@@ -94,22 +91,25 @@ public class Game {
 
 	public void dealersChoice() {
 		if (dealer.getHand().totalHandValue() > 21) {
-			System.out.println("Dealer busts!");
+			System.out.println(dealer.getName() + " busts!");
 			playAgain();
-			return;
 		}
-		if (dealer.getHand().totalHandValue() > 13) {
+		// if (user.getHand().totalHandValue() > 21) {
+		// System.out.println(user.getName() + " busts!");
+		// }
+		if (dealer.getHand().totalHandValue() >= 17) {
 			System.out.println("Dealer chose to stay with " + dealer.getHand().totalHandValue());
 		}
-		if (dealer.getHand().totalHandValue() <= 13) {
+		if (dealer.getHand().totalHandValue() < 16) {
 			dealer.getHand().addCard(Deck.takeHit());
 			gameDeck.removeCard(Deck.takeHit());
 			System.out.println("Dealer chose to hit ");
-			System.out.println(dealer.getHand());
-			System.out.println("Dealer's hand: " + dealer.getHand().totalHandValue());
+			// System.out.println(dealer.getHand());
+			System.out.println(dealer.getName() + "'s hand: " + dealer.getHand().toString() + " "
+					+ dealer.getHand().totalHandValue());
+
 		}
 		hitOrStay();
-
 	}
 
 	public void playAgain() {
@@ -117,7 +117,6 @@ public class Game {
 		String choice = scanner.next();
 		if (choice.toLowerCase().equals("yes")) {
 			gameDeck.resetDeck();
-
 			start();
 		} else {
 			System.out.println("You have left the game. Have a nice day!");

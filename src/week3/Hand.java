@@ -26,7 +26,7 @@ public class Hand {
 	public void setHand(List<Card> h) {
 		hand = h;
 	}
-
+//method returns a total of the cards in hand specified
 	public int totalHandValue() {
 		int totalValue = 0;
 
