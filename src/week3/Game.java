@@ -1,7 +1,5 @@
 package week3;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Scanner;
 
 public class Game {
@@ -9,15 +7,8 @@ public class Game {
 	Player dealer = new Player();
 	Player user = new Player();
 	Deck gameDeck = new Deck();
-	// static List<Card> deck = new ArrayList<>(52);
 
-	public static void main(String[] args) {
-		// tester class instantiating all objects
-		Game g = new Game();
-		g.start();
-	}
-
-	// this method should start the game
+	// this method starts the game
 	public void start() {
 		System.out.println("Welcome to Black Jack ");
 		gameDeck.makeDeck();
@@ -28,30 +19,27 @@ public class Game {
 		double wallet = scanner.nextInt();
 		user.setWallet(wallet);
 		Hand h = new Hand();
-		h.addCard(gameDeck.takeHit());
-		gameDeck.removeCard(gameDeck.takeHit());
-		h.addCard(gameDeck.takeHit());
-		gameDeck.removeCard(gameDeck.takeHit());
-		System.out.println(h.toString());
-		System.out.println(h.getHand().size());
+		h.addCard(Deck.takeHit());
+		gameDeck.removeCard(Deck.takeHit());
+		h.addCard(Deck.takeHit());
+		gameDeck.removeCard(Deck.takeHit());
 
 		user.setHand(h);
-		for (Card c : user.getHand().getHand()) {
-			System.out.println(c.getRank() + " " + c.getSuit());
-		}
+		user.getHand().getHand();
+		
 		Hand d = new Hand();
-		d.addCard(gameDeck.takeHit());
-		gameDeck.removeCard(gameDeck.takeHit());
-		d.addCard(gameDeck.takeHit());
-		gameDeck.removeCard(gameDeck.takeHit());
+		d.addCard(Deck.takeHit());
+		gameDeck.removeCard(Deck.takeHit());
+		d.addCard(Deck.takeHit());
+		gameDeck.removeCard(Deck.takeHit());
 		dealer.setName("Dealer");
 		dealer.setWallet(wallet);
 		dealer.setHand(d);
-		for (Card c : dealer.getHand().getHand()) {
-			System.out.println(c.getRank() + " " + c.getSuit());
-		}
-		System.out.println(user.getName() + ": " + h.totalHandValue());
-		System.out.println(dealer.getName() + ": " + d.totalHandValue());
+
+		dealer.getHand().getHand();
+		
+		System.out.println(user.getName() + "'s hand: " + h.toString() + " " + h.totalHandValue());
+		System.out.println(dealer.getName() + "'s hand: " + d.toString() + " " + d.totalHandValue());
 		gameDeck.cardsRemaining();
 		hitOrStay();
 		scanner.close();
@@ -85,8 +73,7 @@ public class Game {
 			System.out.println(user.getHand().totalHandValue());
 
 			dealersChoice();
-			// hitOrStay();
-			// dealersChoice();
+
 		} else if (nextTurn.toLowerCase().equals("stay")) {
 			if (dealer.getHand().totalHandValue() == user.getHand().totalHandValue()) {
 				System.out.println(dealer.getName() + " and " + user.getName() + " have tied with "

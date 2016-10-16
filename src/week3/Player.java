@@ -5,9 +5,10 @@ public class Player {
 	private Hand hand;
 	private Double wallet;
 
-	public Player(){
-		
+	public Player() {
+
 	}
+
 	public Player(String name, Hand hand, Double wallet) {
 
 		setName(name);
@@ -28,9 +29,7 @@ public class Player {
 	}
 
 	public void setHand(Hand h) {
-		System.out.println("In " + name + "'s hand");
 		this.hand = h;
-		System.out.println(hand.getHand().size());
 	}
 
 	public Double getWallet() {
@@ -41,12 +40,13 @@ public class Player {
 		this.wallet = wallet;
 	}
 
-	public void placeWager(int wager) {
+	// public void placeWager() {
+	//
+	// }
 
-	}
-
-	@Override
-	public String toString() {
-		return "Player [name=" + name + ", hand=" + hand + ", wallet=" + wallet + "]";
-	}
+	// @Override
+	// public String toString() {
+	// return "Player [name=" + name + ", hand=" + hand + ", wallet=" + wallet +
+	// "]";
+	// }
 }
