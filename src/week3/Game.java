@@ -47,12 +47,12 @@ public class Game {
 	}
 
 	public void hitOrStay() {
-		if (user.getHand().totalHandValue() > 21) {
-			System.out.println("Bust!");
-			System.out.println(dealer.getName() + " wins!");
-			playAgain();
-			return;
-		}
+		// if (user.getHand().totalHandValue() > 21) {
+		// System.out.println("Bust!");
+		// System.out.println(dealer.getName() + " wins!");
+		// playAgain();
+		// return;
+		// }
 		if (user.getHand().totalHandValue() == 21) {
 			System.out.println("You won!");
 			playAgain();
@@ -67,28 +67,35 @@ public class Game {
 		String nextTurn = scanner.next();
 		if (nextTurn.toLowerCase().equals("hit")) {
 			user.getHand().addCard(Deck.takeHit());
-//			if (Deck.takeHit().getRank() == Rank.ACE && user.getHand().totalHandValue() > 10){
-//			user.getHand().addCard(Deck.takeHit())
-//			}
 			gameDeck.removeCard(Deck.takeHit());
-			System.out.println(
-					user.getName() + "'s hand: " + user.getHand().toString() + " " + user.getHand().totalHandValue());
-			dealersChoice();
-		} else if (nextTurn.toLowerCase().equals("stay")) {
-			if (dealer.getHand().totalHandValue() == user.getHand().totalHandValue()) {
-				System.out.println(dealer.getName() + " and " + user.getName() + " have tied with "
-						+ user.getHand().totalHandValue());
+			System.out.println(user.getName() + "'s hand: " + user.getHand().toString() + " "
+					+ user.getHand().totalHandValue());
+			// if (Deck.takeHit().getRank() == Rank.ACE &&
+			// user.getHand().totalHandValue() > 10){
+			// user.getHand().addCard(Deck.takeHit())
+			// }
+			if (user.getHand().totalHandValue() > 21) {
+				System.out.println("Bust!");
+				System.out.println(dealer.getName() + " wins!");
 				playAgain();
 			}
-			if (dealer.getHand().totalHandValue() > user.getHand().totalHandValue()) {
-				System.out.println(dealer.getName() + " wins with " + dealer.getHand().totalHandValue());
-				playAgain();
-			}
+				dealersChoice();
+			} else if (nextTurn.toLowerCase().equals("stay")) {
+				if (dealer.getHand().totalHandValue() == user.getHand().totalHandValue()) {
+					System.out.println(dealer.getName() + " and " + user.getName() + " have tied with "
+							+ user.getHand().totalHandValue());
+					playAgain();
+				}
+				if (dealer.getHand().totalHandValue() > user.getHand().totalHandValue()) {
+					System.out.println(dealer.getName() + " wins with " + dealer.getHand().totalHandValue());
+					playAgain();
+				}
 
-			else if (dealer.getHand().totalHandValue() < user.getHand().totalHandValue()) {
-				System.out.println(user.getName() + " wins with " + user.getHand().totalHandValue());
-				playAgain();
-			}
+				else if (dealer.getHand().totalHandValue() < user.getHand().totalHandValue()) {
+					System.out.println(user.getName() + " wins with " + user.getHand().totalHandValue());
+					playAgain();
+				}
+			
 		}
 	}
 
@@ -97,17 +104,15 @@ public class Game {
 			System.out.println(dealer.getName() + " busts!");
 			playAgain();
 		}
-		// if (user.getHand().totalHandValue() > 21) {
-		// System.out.println(user.getName() + " busts!");
-		// }
+		if (user.getHand().totalHandValue() >= 21) {
+			System.out.println(user.getName() + " busts!");
+		}
 		if (dealer.getHand().totalHandValue() >= 17) {
 			System.out.println("Dealer chose to stay with " + dealer.getHand().totalHandValue());
-		}
-		if (dealer.getHand().totalHandValue() < 16) {
+		} else if (dealer.getHand().totalHandValue() < 16) {
 			dealer.getHand().addCard(Deck.takeHit());
 			gameDeck.removeCard(Deck.takeHit());
 			System.out.println("Dealer chose to hit ");
-			// System.out.println(dealer.getHand());
 			System.out.println(dealer.getName() + "'s hand: " + dealer.getHand().toString() + " "
 					+ dealer.getHand().totalHandValue());
 
