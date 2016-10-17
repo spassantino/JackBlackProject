@@ -45,6 +45,10 @@ public class Deck implements Comparator<Card> {
 	}
 
 	public static Card takeHit() {
+//		if (deck.get(0).getRank() == Rank.ACE && ){
+//			return deck.get(0).setValue(v);
+//		}
+			
 		return deck.get(0);
 	}
 

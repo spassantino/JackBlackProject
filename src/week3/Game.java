@@ -67,6 +67,9 @@ public class Game {
 		String nextTurn = scanner.next();
 		if (nextTurn.toLowerCase().equals("hit")) {
 			user.getHand().addCard(Deck.takeHit());
+//			if (Deck.takeHit().getRank() == Rank.ACE && user.getHand().totalHandValue() > 10){
+//			user.getHand().addCard(Deck.takeHit())
+//			}
 			gameDeck.removeCard(Deck.takeHit());
 			System.out.println(
 					user.getName() + "'s hand: " + user.getHand().toString() + " " + user.getHand().totalHandValue());
@@ -108,6 +111,10 @@ public class Game {
 			System.out.println(dealer.getName() + "'s hand: " + dealer.getHand().toString() + " "
 					+ dealer.getHand().totalHandValue());
 
+		}
+		if (dealer.getHand().totalHandValue() > 21) {
+			System.out.println(dealer.getName() + " busts!");
+			playAgain();
 		}
 		hitOrStay();
 	}
